@@ -1,0 +1,73 @@
+/* Version dark */
+
+/* général */
+
+
+/* 
+
+Test couleurs :  
+
+    #470459
+    #410252
+    #340a40
+
+*/
+
+
+body {
+    background-color: #FFF ;
+
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(4, 1fr);
+
+}
+
+
+div { 
+    grid-area: 2 / 2 / 4 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    background-color: #FFF;
+    height: 300px;
+    width: 300px;
+    border: 3px solid #410252;
+    /* border-top : 1px solid #410252; */
+    border-right: none;
+    border-bottom: none;
+    /* border-left: 1px solid #410252; */
+
+    border-radius: 100%;
+    /* margin: 3%; */
+
+    position: relative;
+    z-index: 0;
+}
+
+
+a {
+    text-decoration: none;
+    color: #410252;
+    position: absolute;
+    z-index: 1;
+}
+
+
+/* Test effets */
+
+/* .gradient {
+    background-color: #410252;
+    height: 350px;
+    width: 350px;
+
+    position: relative;
+    z-index: 0;
+
+    border-radius: 100%;
+} */
+
+
