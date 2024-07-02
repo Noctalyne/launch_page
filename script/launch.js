@@ -1,3 +1,6 @@
+// Déclaration du message que je veux afficher
+let message = "Entrer";
+
 
 // récupère le canva par sa classe
 // let grad_effect = document.getElementsByClassName("gradient");
@@ -8,33 +11,78 @@ let degre = 0;
 function rotation() {
     let btn = document.querySelector("button");
     btn.setAttribute("style", "transform: rotate(" + degre + "deg);");
-    degre = degre +10 ;
+    degre = degre + 10;
+
+    // Bloque à 360° pour éviter qu'il continue à l'infini
+    if (degre >= 361) {
+        degre = 0;
+    }
 };
 
 
 
-// Fonction pour ecrire le message
-let message = ["E","n","t","r","e","r"]
-let texte = "";
-
+// Fonction pour écrire le message
 function titre() {
-    let cible = document.querySelector("h1");
-    for (let i = 0; i < message.length; i++) {
-        texte = texte + message[i];
-        
+
+    // Création du tableau qui contient les lettres du message
+    let lettres = message.split("");
+
+    // Récupération de la div par son id
+    let cible = document.getElementById("element");
+
+    // Pour chaque lettres du tableau message
+    for (let i = 0; i < lettres.length; i++) {
+
+
+
+        // Création de l'élement <span>
+        let span = document.createElement("span");
+
+        // Ajout d'un class pour gérer le CSS
+        span.setAttribute("class", "lettre");
+
+        // Ajout id pour tester l'affichage (effets, style..)
+        span.setAttribute("id", i);
+
+        // Ne les affiche pas tous de suite
+        span.setAttribute("style", "display: none;")
+
+        // Ajout des éléments dans la div
+        cible.appendChild(span);
+
+        // Ajout du contenu à afficher
+        span.innerHTML = lettres[i];
+
+
+        // setTimeout(function () {
+            
+
+        //     span.setAttribute("style", "display: block;");
+        // }, 500);
+
+
+
     };
-
-    cible.texContent = texte;
-
-    // console.log(texte);
     
 
+let element = document.get
 
 };
 
+
+
+
+
+// setTimeout(function(){
+//     console.log("hehe");
+
+
+// }, 5000)
 
 // Utilisation des fonctions
 
 setInterval(rotation, 100);
 
-setInterval(titre, 100);
+// setInterval(titre, 100);
+
+titre();
