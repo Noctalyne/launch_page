@@ -1,15 +1,43 @@
 // Déclaration du message que je veux afficher
 let message = "Entrer";
 
+// Affichage lettre par lettre
+function afficherTexte(message) {
+    let i = 0;
 
-// récupère le canva par sa classe
-// let grad_effect = document.getElementsByClassName("gradient");
+    let cible = document.getElementById("msg");
+
+    const intervalle = setInterval(() => {
+        if (i < message.length) {
+            cible.innerHTML += message[i];
+            i++;
+        } else if (cible.textContent.length = message.length) {
+            clearInterval(intervalle);
+            cible.innerHTML = "";
+            afficherTexte(message);
+        }
+    }, 300);
+
+    // console.log(cible.textContent);
+    // console.log(cible.textContent.length);
+
+    if ( cible.length < 0) {
+        console.log("entre dans le if");
+    }
+}
+
+
+afficherTexte(message);
+
+
+
 
 
 // Fonction qui gère la rotation
 let degre = 0;
-function rotation() {
-    let btn = document.querySelector("button");
+setInterval(() => {
+
+    let btn = document.getElementById("load");
     btn.setAttribute("style", "transform: rotate(" + degre + "deg);");
     degre = degre + 10;
 
@@ -17,72 +45,10 @@ function rotation() {
     if (degre >= 361) {
         degre = 0;
     }
-};
-
-
-
-// Fonction pour écrire le message
-function titre() {
-
-    // Création du tableau qui contient les lettres du message
-    let lettres = message.split("");
-
-    // Récupération de la div par son id
-    let cible = document.getElementById("element");
-
-    // Pour chaque lettres du tableau message
-    for (let i = 0; i < lettres.length; i++) {
-
-
-
-        // Création de l'élement <span>
-        let span = document.createElement("span");
-
-        // Ajout d'un class pour gérer le CSS
-        span.setAttribute("class", "lettre");
-
-        // Ajout id pour tester l'affichage (effets, style..)
-        span.setAttribute("id", i);
-
-        // Ne les affiche pas tous de suite
-        span.setAttribute("style", "display: none;")
-
-        // Ajout des éléments dans la div
-        cible.appendChild(span);
-
-        // Ajout du contenu à afficher
-        span.innerHTML = lettres[i];
-
-
-        // setTimeout(function () {
-            
-
-        //     span.setAttribute("style", "display: block;");
-        // }, 500);
-
-
-
-    };
-    
-
-let element = document.get
-
-};
+}, 100);
 
 
 
 
-
-// setTimeout(function(){
-//     console.log("hehe");
-
-
-// }, 5000)
-
-// Utilisation des fonctions
-
-setInterval(rotation, 100);
-
-// setInterval(titre, 100);
-
-titre();
+// récupère le canva par sa classe
+// let grad_effect = document.getElementsByClassName("gradient");
