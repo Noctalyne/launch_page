@@ -1,5 +1,9 @@
 // Déclaration du message que je veux afficher
-let message = "Entrer";
+let message = "ENTRER";
+
+
+afficherTexte(message);
+
 
 // Affichage lettre par lettre
 function afficherTexte(message) {
@@ -13,23 +17,36 @@ function afficherTexte(message) {
             i++;
         } else if (cible.textContent.length = message.length) {
             clearInterval(intervalle);
-            cible.innerHTML = "";
-            afficherTexte(message);
+
+
+            premier = setTimeout(() => {
+                cible.setAttribute("class", "effet_on");
+                clearTimeout(premier);
+            }, 200);
+
+            
+            deux = setTimeout(() => {
+                cible.setAttribute("class", "effet_off");
+                clearTimeout(deux);
+            }, 400);
+
+
+            trois = setTimeout(() => {
+                cible.setAttribute("class", "effet_on");
+                clearTimeout(trois);
+            }, 600);
+
+            setTimeout(() => {
+                cible.removeAttribute("class");
+                cible.innerHTML = "";
+                afficherTexte(message);
+            }, 1000);
+
         }
-    }, 300);
 
-    // console.log(cible.textContent);
-    // console.log(cible.textContent.length);
+    }, 500);
 
-    if ( cible.length < 0) {
-        console.log("entre dans le if");
-    }
 }
-
-
-afficherTexte(message);
-
-
 
 
 
@@ -46,9 +63,3 @@ setInterval(() => {
         degre = 0;
     }
 }, 100);
-
-
-
-
-// récupère le canva par sa classe
-// let grad_effect = document.getElementsByClassName("gradient");
