@@ -6,52 +6,56 @@ const bouton = document.getElementById("load");
 
 const msg = document.getElementById("msg");
 
-
+const logo = document.getElementById("logo");
 // function global() {
-//     if (msg == message) {
+//     if (msg.textContent == "") {
 //         afficherTexte(message);
-//     } 
+//     }
 // }
 // global();
 
-
+// logo.setAttribute("src", "./img/test_logo.svg");
 
 afficherTexte(message);
 
 
 // Affichage lettre par lettre
 function afficherTexte(message) {
-    let i = 0;
 
-    // let cible = document.getElementById("msg");
+    let i = 0;
 
     const intervalle = setInterval(() => {
         if (i < message.length) {
+            msg.setAttribute("class", "texte");
             msg.innerHTML += message[i];
             i++;
         } else if (msg.textContent.length = message.length) {
+
+            logo.setAttribute("src", "./imgs/test_logo.svg");
+
             clearInterval(intervalle);
 
-            for (i=200; i < 1200; i+200) {
-                console.log("i = " + i);
+            // Initialise le "timer"
+            let temps = 600;
+
+            for (clignotement=0; clignotement < 3; clignotement++) {
+                
+                effet_desactiver(temps);
+                temps += 200; // augmente le "timer"
+                console.log("temps : " + temps);
+
+                effet_activer(temps);
+                temps += 200; // augmente le "timer"
+                console.log("temps : " + temps);
             }
 
-            effet_activer(200);
-            effet_desactiver(400);
-
-            effet_activer(600);
-            effet_desactiver(800);
-
-            effet_activer(1000);
-            effet_desactiver(1200);
-
-
             setTimeout(() => {
-                msg.removeAttribute("class");
+                // msg.removeAttribute("class");
+                msg.setAttribute("class", "texte effet_on");
                 bouton.setAttribute("class", "load");
                 msg.innerHTML = "";
                 afficherTexte(message);
-            }, 5000);
+            }, 6000);
 
         }
 
@@ -60,19 +64,24 @@ function afficherTexte(message) {
 }
 
 function effet_activer(temps) {
-    const activ = setTimeout(() => {
-        msg.setAttribute("class", "effet_on");
+    const active = setTimeout(() => {
+
+        logo.setAttribute("src", "./imgs/img.svg");
+        
+        msg.setAttribute("class", "texte effet_on");
         bouton.setAttribute("class", "load _glow");
-        clearTimeout(activ);
+        clearTimeout(active);
     }, temps);
 }
 
 function effet_desactiver(temps) {
-    deux = setTimeout(() => {
-        msg.setAttribute("class", "effet_off");
+    const desactive = setTimeout(() => {
+        logo.setAttribute("src", "./imgs/test_logo.svg");
+
+        msg.setAttribute("class", "texte effet_off");
         bouton.setAttribute("class", "load");
-        clearTimeout(deux);
-    }, temps); // changer le délai +200
+        clearTimeout(desactive);
+    }, temps);
 }
 
 
@@ -80,17 +89,12 @@ function effet_desactiver(temps) {
 let degre = 0;
 setInterval(() => {
 
-    // let btn = document.getElementById("load");
-
     bouton.setAttribute("style", "transform: rotate(" + degre + "deg);");
     degre = degre + 10;
 
     // Bloque à 360° pour éviter qu'il continue à l'infini
     if (degre >= 361) {
         degre = 0;
-        // btn.setAttribute("class", "load _glow");
     }
-    // else {
-    //     btn.setAttribute("class", "load _glow");
-    // }
+
 }, 200);
