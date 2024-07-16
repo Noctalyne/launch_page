@@ -7,14 +7,7 @@ const bouton = document.getElementById("load");
 const msg = document.getElementById("msg");
 
 const logo = document.getElementById("logo");
-// function global() {
-//     if (msg.textContent == "") {
-//         afficherTexte(message);
-//     }
-// }
-// global();
 
-// logo.setAttribute("src", "./img/test_logo.svg");
 
 afficherTexte(message);
 
@@ -38,19 +31,18 @@ function afficherTexte(message) {
             // Initialise le "timer"
             let temps = 600;
 
-            for (clignotement=0; clignotement < 3; clignotement++) {
-                
+            for (clignotement = 0; clignotement < 3; clignotement++) {
+
                 effet_desactiver(temps);
                 temps += 200; // augmente le "timer"
-                console.log("temps : " + temps);
+                // console.log("temps : " + temps);
 
                 effet_activer(temps);
                 temps += 200; // augmente le "timer"
-                console.log("temps : " + temps);
+                // console.log("temps : " + temps);
             }
 
             setTimeout(() => {
-                // msg.removeAttribute("class");
                 msg.setAttribute("class", "texte effet_on");
                 bouton.setAttribute("class", "load");
                 msg.innerHTML = "";
@@ -66,20 +58,26 @@ function afficherTexte(message) {
 function effet_activer(temps) {
     const active = setTimeout(() => {
 
-        logo.setAttribute("src", "./imgs/img.svg");
-        
+        // logo.setAttribute("src", "./imgs/img.svg");
+        logo.src = "./imgs/img.svg"; // version simplifié
+
         msg.setAttribute("class", "texte effet_on");
+
         bouton.setAttribute("class", "load _glow");
+
         clearTimeout(active);
     }, temps);
 }
 
 function effet_desactiver(temps) {
     const desactive = setTimeout(() => {
+
         logo.setAttribute("src", "./imgs/test_logo.svg");
 
         msg.setAttribute("class", "texte effet_off");
+
         bouton.setAttribute("class", "load");
+
         clearTimeout(desactive);
     }, temps);
 }
@@ -98,3 +96,30 @@ setInterval(() => {
     }
 
 }, 200);
+
+
+
+
+
+// Test changer thème 
+
+function changerTheme() {
+
+    let theme = document.getElementById("theme");
+
+    let theme_actuel = document.querySelector("html").getAttribute("data-theme");
+
+    // console.log(theme);
+
+    if (theme_actuel === "dark") {
+        theme.setAttribute("aria-label", "Changer le thème en sombre");
+        document.querySelector("html").setAttribute("data-theme", "light");
+
+    } else {
+        theme.setAttribute("aria-label", "Changer le thème en clair");
+        document.querySelector("html").setAttribute("data-theme", "dark");
+
+    }
+
+}
+

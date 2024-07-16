@@ -1,16 +1,3 @@
-/* " */
-
-/* Ajout police perso */
-@font-face {
-    font-family: MonsterFont;
-    src: url(MonsterFont.ttf);
-}
-
-@font-face {
-    font-family: Sacramento;
-    src: url(Sacramento-Regular.ttf);
-}
-
 /* Test couleurs :  
 
     #470459
@@ -20,8 +7,104 @@
 */
 
 
+
+/* Déclaration de la police importer (font) */
+@font-face {
+    font-family: MonsterFont;
+    src: url(MonsterFont.ttf);
+}
+
+
+
+/* Déclaration variable fixe des thèmes */
+
+/* Thème sombre */
+[data-theme="dark"] {
+
+
+    /* Couleur background */
+    --color-bg: #000000;
+
+    /* Couleur du texte */
+    --text-color: #ffffff;
+
+    /* Palette de couleur */
+    --color-primary: #4F006B;
+    --color-secondary: #ffffff;
+
+    /* Couleur effet néon activer */
+    --shadow-box-neon-on:
+        0 0 13px #bc13fe,
+        0 0 21px #bc13fe,
+        0 0 32px #bc13fe,
+        0 0 45px #bc13fe;
+
+    /* Couleur effet néon désactiver */
+    --shadow-box-neon-off:
+        0 0 13px #bb13fe2c,
+        0 0 21px #bb13fe2c,
+        0 0 32px #bb13fe2c,
+        0 0 45px #bb13fe2c;
+
+
+    /* Lien vers l'image  */
+    --theme-icon: url("../imgs/sun.svg");
+
+    /* Effet "swipe" */
+    --target-theme-icon: left;
+
+
+    --swipe: translateX(0px);
+
+
+}
+
+
+/* Thème clair */
+[data-theme="light"] {
+
+    /* Couleur background */
+    --color-bg: #ffffff;
+
+    /* Couleur du texte */
+    --text-color: #000000;
+
+    /* Palette de couleur */
+    --color-primary: #4F006B;
+    --color-secondary: #ffffff;
+
+    /* Lien vers l'image  */
+    --theme-icon: url("../imgs/halfmoon.svg");
+
+    /* Effet "swipe" */
+    --target-theme-icon: right;
+
+    --swipe: translateX(45px);
+
+
+
+
+    /* A MODIFIER  */
+
+    /* Couleur effet néon activer */
+    --shadow-box-neon-on:
+        0 0 13px #bc13fe,
+        0 0 21px #bc13fe,
+        0 0 32px #bc13fe,
+        0 0 45px #bc13fe;
+
+    /* Couleur effet néon désactiver */
+    --shadow-box-neon-off:
+        0 0 13px #bb13fe2c,
+        0 0 21px #bb13fe2c,
+        0 0 32px #bb13fe2c,
+        0 0 45px #bb13fe2c;
+}
+
+
+
 body {
-    background-color: black;
+    background-color: var(--color-bg);
     margin: 0px;
 }
 
@@ -33,10 +116,9 @@ body {
     /* -> à modifier pour le responssive*/
 }
 
-
 a {
     text-decoration: none;
-    color: #FFF;
+    color: var(--text-color);
     text-align: center;
 
     display: flex;
@@ -50,14 +132,13 @@ a {
     padding: 10px;
 }
 
-
 /* "bouton"  */
 .load {
     background-color: transparent;
     height: 425px;
     width: 425px;
 
-    border: 5px solid #fff;
+    border: 5px solid var(--color-secondary);
     border-right: none;
     border-bottom: none;
 
@@ -69,16 +150,12 @@ a {
 
 /* Effet  */
 ._glow {
-    border: 3px solid #fff !important;
-    box-shadow:
-        0 0 13px #bc13fe,
-        0 0 21px #bc13fe,
-        0 0 32px #bc13fe,
-        0 0 45px #bc13fe;
+    border: 3px solid var(--color-secondary) !important;
+    box-shadow: var(--shadow-box-neon-on);
 }
 
 .texte {
-    color: #fff;
+    color: var(--text-color);
     font-family: MonsterFont;
     font-size: 40px;
     letter-spacing: 10px;
@@ -89,26 +166,16 @@ a {
 
 .effet_on {
     transform: scale(1);
-    text-shadow:
-        0 0 13px #bc13fe,
-        0 0 21px #bc13fe,
-        0 0 32px #bc13fe,
-        0 0 45px #bc13fe;
+    text-shadow: var(--shadow-box-neon-on);
 }
 
 .effet_off {
     color: transparent;
     transform: scale(0.9);
-    text-shadow:
-        0 0 13px #bb13fe2c,
-        0 0 21px #bb13fe2c,
-        0 0 32px #bb13fe2c,
-        0 0 45px #bb13fe2c;
-
+    text-shadow: var(--shadow-box-neon-off);
 }
 
-
-/* PAGE 404   */
+/* PAGE 404 not_found   */
 
 .center_element {
     display: flex;
@@ -116,7 +183,46 @@ a {
     margin: 250px 0px;
 }
 
-/* .not_found {
+.box_theme {
+    display: flex;
+    justify-content: right;
+    margin: 10px;
+}
 
+#theme {
+    height: 40px;
+    width: 100px;
+    padding: 0px;
 
-} */
+    background-color: transparent;
+
+    display: flex;
+    flex-direction: row;
+    /* justify-content: var(--target-theme-icon); */
+
+    position: absolute;
+    border: 1px solid var(--color-primary);
+    border-radius: 30px;
+}
+
+#theme span {
+    background-color: var(--color-primary);
+    /* background-color: blue; */
+    background-image: var(--theme-icon);
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position-x: 10px;
+    background-position-y: center;
+
+    height: 35px;
+    width: 50px;
+
+    margin: 2px;
+    padding: 0px;
+
+    border-radius: 30px;
+    /* position: absolute; */
+
+    /* left: -2px; */
+    transform: var(--swipe);
+}
